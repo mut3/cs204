@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS tblEmployee, tblDepartment, tblDeptLocations, tblProject, tblWorksOn, tblDependent;
 
-CREATE TABLE IF NOT EXISTS tblEmployee
+CREATE TABLE tblEmployee
 (
 	fldFname varchar(255),
 	fldMinit varchar(1),
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS tblEmployee
 	PRIMARY KEY(pmkSsn)
 );
 
-CREATE TABLE IF NOT EXISTS tblDepartment
+CREATE TABLE tblDepartment
 (
 	fldDname varchar(255),
 	pmkDnumber varchar(255) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS tblDepartment
 	PRIMARY KEY(pmkDnumber)
 );
 
-CREATE TABLE IF NOT EXISTS tblDeptLocations
+CREATE TABLE tblDeptLocations
 (
 	fnkDnumber varchar(255) NOT NULL,
 	fldDlocation varchar(255) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS tblDeptLocations
 	PRIMARY KEY(fnkDnumber, fldDlocation)
 );
 
-CREATE TABLE IF NOT EXISTS tblProject
+CREATE TABLE tblProject
 (
 	fldPname varchar(255),
 	pmkPnumber varchar(255) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS tblProject
 	PRIMARY KEY(pmkPnumber)
 );
 
-CREATE TABLE IF NOT EXISTS tblWorksOn
+CREATE TABLE tblWorksOn
 (
 	fnkEssn varchar(255) NOT NULL,
 	fnkPno varchar(255) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS tblWorksOn
 	PRIMARY KEY(fnkEssn, fnkPno)
 );
 
-CREATE TABLE IF NOT EXISTS tblDependent
+CREATE TABLE tblDependent
 (
 	fnkEssn int(9) NOT NULL,
 	fldDependentName varchar(255) NOT NULL,
