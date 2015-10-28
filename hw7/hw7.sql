@@ -1,4 +1,9 @@
-DROP TABLE tblEmployee, tblDepartment, tblDeptLocations, tblProject, tblWorksOn, tblDependent;
+DROP TABLE tblEmployee CASCADE CONSTRAINTS;
+DROP TABLE tblDepartment CASCADE CONSTRAINTS;
+DROP TABLE tblDeptLocations CASCADE CONSTRAINTS;
+DROP TABLE tblProject CASCADE CONSTRAINTS;
+DROP TABLE tblWorksOn CASCADE CONSTRAINTS;
+DROP TABLE tblDependent CASCADE CONSTRAINTS;
 
 CREATE TABLE tblEmployee
 (
