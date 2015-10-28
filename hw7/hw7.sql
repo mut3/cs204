@@ -14,7 +14,7 @@ CREATE TABLE tblEmployee
 	fnkDno varchar(255),
 	CONSTRAINT chk_EmployeeSex CHECK (fldSex='M' OR fldSex='F'),
 	CONSTRAINT chk_EmployeeSalary CHECK (fldSalary > 20000),
-	CONSTRAINT fk_EmpDno FOREIGN KEY (fnkDno) REFERENCES tblDepartment(pmkDnumber),
+	CONSTRAINT fk_EmpSuperSsn FOREIGN KEY (fnkSuperSsn) REFERENCES tblEmployee(pmkSsn),
 	PRIMARY KEY(pmkSsn)
 );
 
@@ -69,5 +69,5 @@ CREATE TABLE tblDependent
 	PRIMARY KEY(fnkEssn, fldDependentName)
 );
 
-ALTER TABLE tblEmployee ADD CONSTRAINT fk_EmpSuperSsn FOREIGN KEY (fnkSuperSsn) REFERENCES tblEmployee(pmkSsn);
+ALTER TABLE tblEmployee ADD CONSTRAINT fk_EmpDno FOREIGN KEY (fnkDno) REFERENCES tblDepartment(pmkDnumber);
 
