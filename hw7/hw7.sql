@@ -22,7 +22,7 @@ CREATE TABLE tblDepartment
 (
 	fldDname varchar(255),
 	pmkDnumber varchar(255) NOT NULL,
-	fnkMgrSsn varchar(255),
+	fnkMgrSsn int,
 	fldMgrStartDate varchar(255),
 	CONSTRAINT fk_DeptMgrSsn FOREIGN KEY (fnkMgrSsn) REFERENCES tblEmployee(pmkSsn),
 	PRIMARY KEY(pmkDnumber)
@@ -49,7 +49,7 @@ CREATE TABLE tblProject
 
 CREATE TABLE tblWorksOn
 (
-	fnkEssn varchar(255) NOT NULL,
+	fnkEssn int NOT NULL,
 	fnkPno varchar(255) NOT NULL,
 	fldHours varchar(255),
 	CONSTRAINT chk_WorksOn_Hours CHECK (fldHours >= 5 AND fldHours <= 40),
