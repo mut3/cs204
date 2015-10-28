@@ -3,6 +3,7 @@
  * names. Modify this order before inserting the tuples into the 
  * tables. Make any additional necessary modifications.
  */
+ALTER TABLE tblEmployee DROP CONSTRAINT fk_EmpDno;
 
 INSERT INTO tblEmployee VALUES ('James', 'E', 'Borg', 888665555, '10-Nov-27', '450 Stone, Houston, TX', 'M', 55000, null, 1);
 INSERT INTO tblEmployee VALUES ('Jennifer', 'S', 'Wallace', 987654321, '20-Jun-31', '291 Berry, Bellaire, TX', 'F', 43000, 888665555, 4);
@@ -55,9 +56,11 @@ INSERT INTO tblWorksOn VALUES (987654321, 30, 20.0);
 INSERT INTO tblWorksOn VALUES (987654321, 20, 15.0);
 INSERT INTO tblWorksOn VALUES (888665555, 20, null);
 
+
+
 commit;
 
-
+ALTER TABLE tblEmployee ADD CONSTRAINT fk_EmpDno FOREIGN KEY (fnkDno) REFERENCES tblDepartment(pmkDnumber);
 
 
 
