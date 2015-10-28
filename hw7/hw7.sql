@@ -1,18 +1,18 @@
-DROP TABLE IF EXISTS tblEmployee, tblDepartment, tblDeptLocations, tblProject, tblWorksOn, tblDependent;
+DROP TABLE tblEmployee, tblDepartment, tblDeptLocations, tblProject, tblWorksOn, tblDependent;
 
 CREATE TABLE tblEmployee
 (
 	fldFname varchar(255),
 	fldMinit varchar(1),
 	fldLname varchar(255),
-	pmkSsn int(9) NOT NULL,
+	pmkSsn int NOT NULL,
 	fldBdate varchar(255),
 	fldAddress varchar(255),
 	fldSex varchar(255),
 	fldSalary varchar(255),
-	fnkSuperSsn int(9),
+	fnkSuperSsn int,
 	fnkDno varchar(255),
-	CONSTRAINT chk_EmployeeSex CHECK (fldSex='M' OR fldSex='F'),
+	CONSTRAINT chk_EmployeeSex CHECK (fldSex IN ('M','F')),
 	CONSTRAINT chk_EmployeeSalary CHECK (fldSalary > 20000),
 	CONSTRAINT fk_EmpSuperSsn FOREIGN KEY (fnkSuperSsn) REFERENCES tblEmployee(pmkSsn),
 	PRIMARY KEY(pmkSsn)
@@ -42,7 +42,7 @@ CREATE TABLE tblProject
 	pmkPnumber varchar(255) NOT NULL,
 	fldPlocation varchar(255),
 	fnkDnum varchar(255),
-	CONSTRAINT chk_ProjLocation CHECK (fldPlocation='Bellaire' OR fldPlocation='Sugarland' OR fldPlocation='Houston' OR fldPlocation='Stafford'),
+	CONSTRAINT chk_ProjLocation CHECK (fldPlocation IN ('Bellaire','Sugarland','Houston','Stafford')),
 	CONSTRAINT fk_PrjDnum FOREIGN KEY (fnkDnum) REFERENCES tblDepartment(pmkDnumber),
 	PRIMARY KEY(pmkPnumber)
 );
@@ -60,7 +60,7 @@ CREATE TABLE tblWorksOn
 
 CREATE TABLE tblDependent
 (
-	fnkEssn int(9) NOT NULL,
+	fnkEssn int NOT NULL,
 	fldDependentName varchar(255) NOT NULL,
 	fldSex char(1),
 	fldBdate varchar(255),
