@@ -26,7 +26,10 @@ INSERT INTO tblWorksOn VALUES (888665555, 20, null);
 SELECT tblDepartment.fldDname, avgSal FROM tblDepartment JOIN (SELECT tblEmployee.fnkDno AS refDno, AVG(fldSalary) AS avgSal FROM tblEmployee GROUP BY tblEmployee.fnkDno) ON tblDepartment.pmkDnumber = refDno;
 
 -- h. Retrieve the average salary of all female employees.
+SELECT AVG(fldSalary) FROM tblEmployee WHERE fldSex='F';
 
 -- i. Find the names and addresses of all employees who work on at least one project located in Houston but whose department has no location in Houston.
+SELECT fldFname, fldLname, fldAddress FROM tblEmployee JOIN tblWorksOn ON tblEmployee.pmkSsn = tblWorksOn.fnkEssn JOIN tblProject ON tblWorksOn.fnkPno = tblProject.pmkPnumber WHERE tblProject.fldPlocation = 'Houston' AND tblEmployee.fnkDno NOT IN (SELECT DISTINCT tblDeptLocations.fnkDnumber FROM tblDeptLocations WHERE tblDeptLocations.fldDlocation = 'Houston');
+
 -- j. List the last names of all department managers who have no dependents
 SELECT fldLname FROM tblEmployee WHERE pmkSsn NOT IN (SELECT DISTINCT fnkEssn FROM tblDependent) AND pmkSsn IN (SELECT DISTINCT fnkMgrSsn FROM tblDepartment);
