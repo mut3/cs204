@@ -33,3 +33,4 @@ SELECT fldFname, fldLname, fldAddress FROM tblEmployee JOIN tblWorksOn ON tblEmp
 
 -- j. List the last names of all department managers who have no dependents
 SELECT fldLname FROM tblEmployee WHERE pmkSsn NOT IN (SELECT DISTINCT fnkEssn FROM tblDependent) AND pmkSsn IN (SELECT DISTINCT fnkMgrSsn FROM tblDepartment);
+
