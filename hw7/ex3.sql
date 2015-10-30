@@ -1,4 +1,4 @@
-SELECT * FROM tblEmployee WHERE fnkSuperSsn = (SELECT pmkSsn FROM tblEmployee WHERE tblEmployee.fldFname = 'Franklin' AND tblEmployee.fldLname = 'Wong');
+SELECT fldFname, fldLname FROM tblEmployee WHERE fnkSuperSsn = (SELECT pmkSsn FROM tblEmployee WHERE tblEmployee.fldFname = 'Franklin' AND tblEmployee.fldLname = 'Wong');
 
 -- d. For each project, list the project name and the total hours per week (by all employees) spent on that project.
 SELECT fldPname, SUM(fldHours) FROM tblProject JOIN tblWorksOn ON tblProject.pmkPnumber = tblWorksOn.fnkPno GROUP BY fldPname;
