@@ -14,7 +14,7 @@ CREATE TABLE tblEmployee
 	fldBdate varchar(255),
 	fldAddress varchar(255),
 	fldSex varchar(255),
-	fldSalary varchar(255),
+	fldSalary int,
 	fnkSuperSsn int,
 	fnkDno varchar(255),
 	CONSTRAINT chk_EmployeeSex CHECK (fldSex IN ('M','F')),
