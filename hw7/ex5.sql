@@ -10,3 +10,5 @@ rollback;
 SELECT fldFname, fldLname, depCount, fldSalary FROM tblEmployee JOIN (SELECT fnkEssn AS refSsn, COUNT(DISTINCT fldDependentname) AS depCount FROM tblDependent GROUP BY fnkEssn) ON pmkSsn = refSsn WHERE depCount >= 2 AND fldSalary < 35000;
 
 -- c) An employee must work on projects for a total of at least 37.5 hours per week.
+
+SELECT fldFname, fldLname, hourCount FROM tblEmployee JOIN (SELECT fnkEssn AS refSsn, SUM(fldHours) AS hourCount FROM tblWorksOn GROUP BY fnkEssn) ON pmkSsn = refSsn WHERE hourCount < 37.5;
