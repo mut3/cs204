@@ -37,6 +37,8 @@ DELETE FROM DEPT_SUMMARY
 WHERE C > 4;
 
 /* E and D do not work because a view is not a full table and is just 
- * reading and aggregating other records. 
+ * reading and aggregating other records. Views cannot update or delete
+ * records as these respectivly try
+ */
 
 DROP VIEW DEPT_SUMMARY;
