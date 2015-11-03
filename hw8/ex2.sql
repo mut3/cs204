@@ -7,3 +7,36 @@ AS SELECT fnkDno, COUNT (*), SUM (fldSalary), AVG (fldSalary)
 FROM tblEmployee
 GROUP BY fnkDno;
 
+-- a)
+SELECT *
+FROM DEPT_SUMMARY;
+-- equiv
+SELECT fnkDno, COUNT (*), SUM (fldSalary), AVG (fldSalary)
+FROM tblEmployee
+GROUP BY fnkDno;
+
+-- b)
+SELECT D, C
+FROM DEPT_SUMMARY
+WHERE TOTAL_S > 100000;
+-- equiv
+
+-- c)
+SELECT D, AVERAGE_S
+FROM DEPT_SUMMARY
+WHERE C > ( SELECT C FROM DEPT_SUMMARY WHERE D=4);
+-- equiv
+
+-- d)
+UPDATE DEPT_SUMMARY
+SET D=3
+WHERE D=4;
+
+-- e)
+DELETE FROM DEPT_SUMMARY
+WHERE C > 4;
+
+/* E and D do not work because a view is not a full table and is just 
+ * reading and aggregating other records. 
+
+DROP VIEW DEPT_SUMMARY;
