@@ -28,16 +28,30 @@ INSERT INTO tblOrders VALUES ('07-Nov-2011', 1, 'Axle',  15);
 
 INSERT INTO tblOrders VALUES ('08-Nov-2011', 2, 'Rotor', 10);
 
-SELECT *
-FROM tblOrders;
 
 -- query here
 -- write a single select statement that calculates, for each item with two or more orders, the average number of days between two consecutive orders.
--- SELECT pmkItemNo, avg_interval
--- FROM tblOrders
--- JOIN
--- WHERE ordCount > 1
--- GROUP BY pmkItemNo;
+SELECT pmkItemNo, AVG (timeTaken) AS avg_interval
+FROM tblOrders
+JOIN (
+	SELECT pmkItemNo AS refItemNo, pmkOrderDate AS refOrderDate, DIFFDATE (nextDate, pmkOrderDate) AS timeTaken
+	FROM tblOrders tblOrds
+	JOIN (
+		SELECT TOP 1 pmkOrderDate
+		FROM tblOrders
+		WHERE pmkOrderDate > tblOrds.pmkOrderDate
+		AND fldItemName = tblOrds.fldItemName
+		ORDER BY pmkOrderDate
+	)
+)
+ON pmkItemNo = refItemNo 
+AND pmkOrderDate = refOrderDate
+GROUP BY pmkItemNo;
+
+-- maybe use CASE?
+-- write out logic of this query and then try implementing
+
+
 
 
 DROP TABLE tblOrders;
