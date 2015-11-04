@@ -36,7 +36,7 @@ SELECT D, AVERAGE_S
 FROM DEPT_SUMMARY
 WHERE C > ( SELECT C FROM DEPT_SUMMARY WHERE D=4);
 -- equiv
-SELECT fnkDno, SUM (fldSalary)
+SELECT fnkDno, AVG (fldSalary)
 FROM tblEmployee
 JOIN (
 	SELECT fnkDno AS refDno, COUNT(*) AS refCount
