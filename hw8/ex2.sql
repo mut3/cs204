@@ -20,12 +20,32 @@ SELECT D, C
 FROM DEPT_SUMMARY
 WHERE TOTAL_S > 100000;
 -- equiv
+SELECT fnkDno, COUNT(*)
+FROM tblEmployee
+JOIN (
+	SELECT fnkDno AS refDno, SUM (fldSalary) AS refSal
+	FROM tblEmployee
+	GROUP BY fnkDno;
+)
+ON fnkDno = refDno
+WHERE refSal > 100000
+GROUP BY fnkDno;
 
 -- c)
 SELECT D, AVERAGE_S
 FROM DEPT_SUMMARY
 WHERE C > ( SELECT C FROM DEPT_SUMMARY WHERE D=4);
 -- equiv
+SELECT fnkDno, SUM (fldSalary)
+FROM tblEmployee
+JOIN (
+	SELECT fnkDno AS refDno, COUNT(*) AS refCount
+	FROM tblEmployee
+	GROUP BY fnkDno;
+)
+ON fnkDno = refDno
+WHERE refCount > (SELECT COUNT(*) FROM tblEmployee WHERE fnkDno = 4)
+GROUP BY fnkDno;
 
 -- d)
 UPDATE DEPT_SUMMARY
