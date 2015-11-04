@@ -1,6 +1,6 @@
 CREATE TABLE tblOrders
 (
-	pmkOrderDate varchar(255) NOT NULL,
+	pmkOrderDate date NOT NULL,
 	pmkItemNo int NOT NULL,
 	fldItemName varchar(255),
 	fldQuantity int,
@@ -28,6 +28,16 @@ INSERT INTO tblOrders VALUES ('07-Nov-2011', 1, 'Axle',  15);
 
 INSERT INTO tblOrders VALUES ('08-Nov-2011', 2, 'Rotor', 10);
 
+SELECT *
+FROM tblOrders;
+
 -- query here
+-- write a single select statement that calculates, for each item with two or more orders, the average number of days between two consecutive orders.
+-- SELECT pmkItemNo, avg_interval
+-- FROM tblOrders
+-- JOIN
+-- WHERE ordCount > 1
+-- GROUP BY pmkItemNo;
+
 
 DROP TABLE tblOrders;
