@@ -25,7 +25,7 @@ FROM tblEmployee
 JOIN (
 	SELECT fnkDno AS refDno, SUM (fldSalary) AS refSal
 	FROM tblEmployee
-	GROUP BY fnkDno;
+	GROUP BY fnkDno
 )
 ON fnkDno = refDno
 WHERE refSal > 100000
@@ -41,7 +41,7 @@ FROM tblEmployee
 JOIN (
 	SELECT fnkDno AS refDno, COUNT(*) AS refCount
 	FROM tblEmployee
-	GROUP BY fnkDno;
+	GROUP BY fnkDno
 )
 ON fnkDno = refDno
 WHERE refCount > (SELECT COUNT(*) FROM tblEmployee WHERE fnkDno = 4)
