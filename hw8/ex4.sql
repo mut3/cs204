@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION deptavgsal
 (Dno IN INT DEFAULT NULL)
 RETURN number
 AS
-retVal number;
+retVal number DEFAULT NULL;
 deptNum INT;
 CURSOR c_avg_sal IS
 	SELECT fnkDno, AVG (fldSalary)
@@ -14,7 +14,7 @@ BEGIN
    	IF (Dno IS NOT NULL) THEN
         OPEN c_avg_sal;
         FETCH c_avg_sal into deptNum, retVal;
-        IF(NOT retVal='') THEN
+        IF(retVal IS NOT NULL) THEN
             RETURN retVal;
         ELSE
             RETURN -2;
