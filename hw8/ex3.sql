@@ -28,7 +28,7 @@ BEGIN
         CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
-          FETCH c_user_tables;
+          FETCH c_user_tables into tableName;
           dbms_output.put_line('4a.');
           EXIT WHEN c_user_tables%notfound;
           dbms_output.put_line('4b.');
