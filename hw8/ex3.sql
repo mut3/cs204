@@ -45,6 +45,6 @@ BEGIN
 	testName := 'wbarnwel';
 	mytables(testName);
 END;
-/
+-- /
 -- 3) Drop the procedure.
-DROP PROCEDURE mytables;
+-- DROP PROCEDURE mytables;
