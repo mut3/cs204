@@ -7,7 +7,7 @@ tableName all_tables.table_name%type;
 name all_users.username%type;
 BEGIN
     dbms_output.put_line('1. userName: '|| userName);
-    IF (userName = NULL) THEN
+    IF (userName IS NULL) THEN
         RAISE no_name_given;
     END IF;
     dbms_output.put_line('2.');
