@@ -41,7 +41,7 @@ SELECT pmkItemNo AS ITEMNO,
 	) 
 	AS AVERAGE_INTERVAL 
 FROM tblOrders
-GROUP BY pmkItemNo
+GROUP BY pmkItemNo;
 
 
 
