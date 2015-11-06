@@ -40,7 +40,8 @@ SELECT pmkItemNo AS ITEMNO,
 	) 
 	AS AVERAGE_INTERVAL 
 FROM tblOrders ordAvg
-GROUP BY pmkItemNo;
+GROUP BY pmkItemNo
+HAVING COUNT(*) > 1;
 
 
 
