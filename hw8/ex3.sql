@@ -26,7 +26,7 @@ BEGIN
         CLOSE c_user_tables;
     EXCEPTION
         WHEN others THEN
-            dbms_output.put_line('Error: Generic!');
+            dbms_output.put_line('Error: Gensdfghjeric!');
     END;
 EXCEPTION
     WHEN no_name_given THEN
