@@ -25,7 +25,7 @@ BEGIN
         dbms_output.put_line('3.');
         OPEN c_user_name;
         FETCH c_user_name into name;
-        IF (name IS NULL) THEN 
+        IF (c_user_name%notfound) THEN 
             RAISE no_data_found; 
         END IF;
         dbms_output.put_line('4.');
