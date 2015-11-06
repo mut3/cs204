@@ -33,9 +33,8 @@ INSERT INTO tblOrders VALUES ('08-Nov-2011', 2, 'Rotor', 10);
 -- write a single select statement that calculates, for each item with two or more orders, the average number of days between two consecutive orders.
 
 SELECT pmkItemNo AS ITEMNO,
-	DIFFDATE(
-		MIN(pmkOrderDate),
-		Max(pmkOrderDate)
+	(
+		MAX(pmkOrderDate) - MIN(pmkOrderDate)
 	)/(
 		(SELECT COUNT(*) FROM tblOrders GROUP BY pmkItemNo) - 1 
 	) 
