@@ -6,11 +6,11 @@ no_name_given EXCEPTION;
 tableName all_tables.table_name%type;
 nameCount INT;
 BEGIN
-    dbms_output.put_line('1. userName: '|| userName);
+    -- dbms_output.put_line('1. userName: '|| userName);
     IF (userName IS NULL) THEN
         RAISE no_name_given;
     END IF;
-    dbms_output.put_line('2.');
+    -- dbms_output.put_line('2.');
     
     DECLARE
         CURSOR c_user_tables IS
@@ -22,25 +22,25 @@ BEGIN
             FROM all_users
             WHERE username=upper(userName);
     BEGIN
-        dbms_output.put_line('3.');
+        -- dbms_output.put_line('3.');
         OPEN c_user_name;
         FETCH c_user_name into nameCount;
-        dbms_output.put_line(nameCount);
+        -- dbms_output.put_line(nameCount);
         IF (nameCount < 1) THEN 
             RAISE no_data_found; 
         END IF;
-        dbms_output.put_line('4.');
+        -- dbms_output.put_line('4.');
         CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
           FETCH c_user_tables into tableName;
-          dbms_output.put_line('4a.');
+          -- dbms_output.put_line('4a.');
           EXIT WHEN c_user_tables%notfound;
-          dbms_output.put_line('4b.');
-          dbms_output.put_line(tableName);
+          -- dbms_output.put_line('4b.');
+          -- dbms_output.put_line(tableName);
         END LOOP;
         CLOSE c_user_tables;
-        dbms_output.put_line('5.');
+        -- dbms_output.put_line('5.');
     EXCEPTION
         WHEN others THEN
             dbms_output.put_line('Error: Gensdfghjeric!');
