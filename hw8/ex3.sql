@@ -3,8 +3,8 @@ CREATE OR REPLACE PROCEDURE mytables (userName IN VARCHAR2 DEFAULT NULL)
 AS
 --Variables EXCEPTION DEF
 no_name_given EXCEPTION;
-tableName VARCHAR2;
-name VARCHAR2;
+tableName all_tables.table_name%type;
+name all_users.username%type;
 BEGIN
     IF (userName = NULL) THEN
         RAISE no_name_given;
