@@ -14,7 +14,11 @@ BEGIN
    	IF (Dno IS NOT NULL) THEN
         OPEN c_avg_sal;
         FETCH c_avg_sal into deptNum, retVal;
-        RETURN retVal;
+        IF(NOT retVal='') THEN
+            RETURN retVal;
+        ELSE
+            RETURN -2;
+        END IF;
         CLOSE c_avg_sal;
    	ELSE
         RETURN -1;
@@ -30,7 +34,7 @@ SELECT deptavgsal(1) FROM DUAL;
 SELECT deptavgsal(4) FROM DUAL;
 SELECT deptavgsal(5) FROM DUAL;
 -- 3) Calls the function inside a query statement to retrieve the name and the deptavgsal of all departments of which the deptavgsal is greater than 32000 and displays the result in the increasing order of department number.
-SELECT pmkDnumber, fldName, deptavgsal(tblDepartment.pmkDnumber) 
+SELECT pmkDnumber, fldDName, deptavgsal(tblDepartment.pmkDnumber) 
 FROM tblDepartment 
 WHERE deptavgsal(tblDepartment.pmkDnumber) > 32000
 ORDER BY pmkDnumber ASC;
