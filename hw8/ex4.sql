@@ -19,7 +19,20 @@ BEGIN
    	ELSE
         RETURN -1;
    	END IF;
-END deptavgsal; 
--- 2) Calls the function as a 'stand-alone' (i.e., without a base table) function, once with no department number, three times with an invalid number (specifically, 2, 3, and 6), three times with a valid number (specifically, 1, 4, and 5). If a function is to be called stand-alone, then the system dummy table DUAL may be used instead. (Run 'select * from DUAL;' to see what’s in the table DUAL. 
--- 3) Calls the function inside a query statement to retrieve the name and the deptavgsal of all departments of which the deptavgsal is greater than 32000 and displays the result in the increasing order of department number. 
+END deptavgsal;
+/ 
+-- 2) Calls the function as a 'stand-alone' (i.e., without a base table) function, once with no department number, three times with an invalid number (specifically, 2, 3, and 6), three times with a valid number (specifically, 1, 4, and 5). If a function is to be called stand-alone, then the system dummy table DUAL may be used instead. (Run 'select * from DUAL;' to see what’s in the table DUAL.
+SELECT deptavgsal(2) FROM DUAL;
+SELECT deptavgsal(3) FROM DUAL;
+SELECT deptavgsal(6) FROM DUAL;
+
+SELECT deptavgsal(1) FROM DUAL;
+SELECT deptavgsal(4) FROM DUAL;
+SELECT deptavgsal(5) FROM DUAL;
+-- 3) Calls the function inside a query statement to retrieve the name and the deptavgsal of all departments of which the deptavgsal is greater than 32000 and displays the result in the increasing order of department number.
+SELECT pmkDnumber, fldName, deptavgsal(tblDepartment.pmkDnumber) 
+FROM tblDepartment 
+WHERE deptavgsal(tblDepartment.pmkDnumber) > 32000
+ORDER BY pmkDnumber ASC;
 -- 4) Drops the function
+DROP FUNCTION deptavgsal;
