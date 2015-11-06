@@ -4,7 +4,7 @@ AS
 --Variables EXCEPTION DEF
 no_name_given EXCEPTION;
 tableName all_tables.table_name%type;
-nameCount all_users.username%type;
+name all_users.username%type;
 BEGIN
     -- dbms_output.put_line('1. userName: '|| userName);
     IF (userName IS NULL) THEN
