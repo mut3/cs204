@@ -4,6 +4,7 @@ AS
 --Variables EXCEPTION DEF
 no_name_given EXCEPTION;
 tableName VARCHAR2;
+name VARCHAR2;
 BEGIN
     IF (userName = NULL) THEN
         RAISE no_name_given;
