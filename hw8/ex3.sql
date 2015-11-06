@@ -42,9 +42,9 @@ END mytables;
 /
 
 -- 2) Executes the procedure three times, once without giving the user name, once with giving an invalid user name (e.g., ‘foobar’), and once with giving a valid user name (e.g., your name). When no user name is given, the procedure shall output a message 'Error: missing user name.' and when an invalid user name is given, 'Error: invalid user name.' Use error handlers for this. (Example codes of user-defined error handling can be found at http://www.tutorialspoint.com/plsql/plsql_exceptions.htm - see the section on User-Defined Exceptions).
-exec mytables();
-exec mytables('foobar');
-exec mytables('wbarnwel');
+-- exec mytables();
+-- exec mytables('foobar');
+-- exec mytables('wbarnwel');
 
 -- 3) Drop the procedure.
-DROP PROCEDURE mytables;
+-- DROP PROCEDURE mytables;
