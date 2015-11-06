@@ -23,13 +23,13 @@ BEGIN
             WHERE username=upper(userName);
     BEGIN
         -- dbms_output.put_line('3.');
-        OPEN c_user_name;
-        FETCH c_user_name into name;
-        IF (name IS NULL) THEN 
-            RAISE no_data_found; 
-        END IF;
-        -- dbms_output.put_line('4.');
-        CLOSE c_user_name;
+        -- OPEN c_user_name;
+        -- FETCH c_user_name into name;
+        -- IF (name IS NULL) THEN 
+        --     RAISE no_data_found; 
+        -- END IF;
+        -- -- dbms_output.put_line('4.');
+        -- CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
           FETCH c_user_tables into tableName;

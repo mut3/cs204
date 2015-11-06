@@ -54,3 +54,4 @@ DROP TRIGGER before_table;
 DROP TRIGGER before_row;
 DROP TRIGGER after_row;
 DROP TRIGGER after_table;
+@runscript tblClear;
