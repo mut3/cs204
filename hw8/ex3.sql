@@ -6,7 +6,7 @@ no_name_given EXCEPTION;
 tableName all_tables.table_name%type;
 name all_users.username%type;
 BEGIN
-    dbms_output.put_line('1. userName: '||userName);
+    dbms_output.put_line('1. userName: ');
     IF (userName = NULL) THEN
         RAISE no_name_given;
     END IF;
@@ -14,7 +14,7 @@ BEGIN
     SELECT username into name
     FROM all_users
     WHERE username = upper(userName);
-    dbms_output.put_line('3.')
+    dbms_output.put_line('3.');
     DECLARE
         CURSOR c_user_tables IS
           SELECT table_name FROM all_tables
