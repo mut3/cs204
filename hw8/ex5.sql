@@ -4,30 +4,29 @@ CREATE TABLE audit_trail
 	message varchar(500)
 );
 -- 2) Create four types of triggers – before_table, after_table, before_row, and after_row (and named as such, i.e.., 'before_table', 'after_table', 'before_row', and 'after_row') – with the event defined on 'update of the salary column of the table Employee' and the action specified as writing an audit record into the table created in step 1. Make each audit record as  'Before_table trigger fired.', 'After_table trigger fired.', 'Before_row trigger fired.', and 'After_row trigger fired.' 
+
 CREATE OR REPLACE TRIGGER before_table 
 BEFORE
 UPDATE
 ON tblEmployee 
 BEGIN 
-   INSERT INTO audit_trail VALUES ('Before_table trigger fired.')
+   INSERT INTO audit_trail VALUES ('Before_table trigger fired.');
 END;
 
 CREATE OR REPLACE TRIGGER before_row 
 BEFORE
-UPDATE
-OF fldSalary 
+UPDATE OF fldSalary 
 ON tblEmployee 
 BEGIN 
-   INSERT INTO audit_trail VALUES ('Before_row trigger fired.')
+   INSERT INTO audit_trail VALUES ('Before_row trigger fired.');
 END;
 
 CREATE OR REPLACE TRIGGER after_row 
 AFTER
-UPDATE
-OF fldSalary 
+UPDATE OF fldSalary 
 ON tblEmployee 
 BEGIN 
-   INSERT INTO audit_trail VALUES ('After_row trigger fired.')
+   INSERT INTO audit_trail VALUES ('After_row trigger fired.');
 END;
 
 CREATE OR REPLACE TRIGGER after_table 
@@ -35,7 +34,7 @@ AFTER
 UPDATE
 ON tblEmployee 
 BEGIN 
-   INSERT INTO audit_trail VALUES ('After_table trigger fired.')
+   INSERT INTO audit_trail VALUES ('After_table trigger fired.');
 END;
 
 -- 3) Fire the triggers created in step 2 by executing a statement for raising all employees’ salary by 10%. This single statement fires all four triggers. 
