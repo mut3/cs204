@@ -37,7 +37,7 @@ BEGIN
           -- dbms_output.put_line('4a.');
           EXIT WHEN c_user_tables%notfound;
           -- dbms_output.put_line('4b.');
-          -- dbms_output.put_line(tableName);
+          dbms_output.put_line(tableName);
         END LOOP;
         CLOSE c_user_tables;
         -- dbms_output.put_line('5.');
