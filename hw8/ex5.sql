@@ -1,9 +1,9 @@
--- 1) Create a table, named “audit_trail”, for storing an audit trail record. It suffices to include one column of a variable length character string, e.g., varchar(500). Hint: feel free to use the same one used in a trigger example code in class. 
+-- 1) Create a table, named 'audit_trail', for storing an audit trail record. It suffices to include one column of a variable length character string, e.g., varchar(500). Hint: feel free to use the same one used in a trigger example code in class. 
 CREATE TABLE audit_trail
 (
 	message varchar(500)
 );
--- 2) Create four types of triggers – before_table, after_table, before_row, and after_row (and named as such, i.e.., “before_table”, “after_table”, “before_row”, and “after_row”) – with the event defined on “update of the salary column of the table Employee” and the action specified as writing an audit record into the table created in step 1. Make each audit record as  “Before_table trigger fired.”, “After_table trigger fired.”, “Before_row trigger fired.”, and “After_row trigger fired.” 
+-- 2) Create four types of triggers – before_table, after_table, before_row, and after_row (and named as such, i.e.., 'before_table', 'after_table', 'before_row', and 'after_row') – with the event defined on 'update of the salary column of the table Employee' and the action specified as writing an audit record into the table created in step 1. Make each audit record as  'Before_table trigger fired.', 'After_table trigger fired.', 'Before_row trigger fired.', and 'After_row trigger fired.' 
 CREATE OR REPLACE TRIGGER before_table 
 BEFORE
 UPDATE
