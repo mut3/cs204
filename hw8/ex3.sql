@@ -11,7 +11,7 @@ BEGIN
         RAISE no_name_given;
     END IF;
     dbms_output.put_line('2.');
-    SELECT username
+    SELECT username into name
     FROM all_users
     WHERE username=upper(userName);
     dbms_output.put_line('3.');
