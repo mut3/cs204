@@ -11,15 +11,21 @@ BEGIN
         RAISE no_name_given;
     END IF;
     dbms_output.put_line('2.');
-    SELECT username into name
-    FROM all_users
-    WHERE username=upper(userName);
-    dbms_output.put_line('3.');
+    
     DECLARE
         CURSOR c_user_tables IS
-          SELECT table_name FROM all_tables
-          WHERE owner = userName;
+            SELECT table_name 
+            FROM all_tables
+            WHERE owner = userName;
+        CURSOR c_user_name IS
+            SELECT username into name
+            FROM all_users
+            WHERE username=upper(userName);
     BEGIN
+        dbms_output.put_line('3.');
+        OPEN c_user_name;
+        dbms_output.put_line('4.');
+        CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
           FETCH c_user_tables into tableName;
@@ -27,6 +33,7 @@ BEGIN
           dbms_output.put_line(tableName);
         END LOOP;
         CLOSE c_user_tables;
+        dbms_output.put_line('5.');
     EXCEPTION
         WHEN others THEN
             dbms_output.put_line('Error: Gensdfghjeric!');
