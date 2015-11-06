@@ -5,24 +5,28 @@ AS
 no_name_given EXCEPTION;
 tableName VARCHAR2;
 BEGIN
-	IF (userName = NULL)
+	IF (userName = NULL) THEN
 		RAISE no_name_given;
-	ENDIF;
+	END IF;
 	SELECT username into name
 	FROM all_users
 	WHERE username = upper(userName);
-	CURSOR c_user_tables IS
-	  SELECT table_name FROM all_tables
-	  WHERE owner = userName;
-	
-	OPEN c_user_tables;
-   	LOOP
-      FETCH c_user_tables into tableName;
-      EXIT WHEN c_user_tables%notfound;
-      dbms_output.put_line(tableName);
-   	END LOOP;
-   	CLOSE c_user_tables;
-
+	DECLARE
+		CURSOR c_user_tables IS
+		  SELECT table_name FROM all_tables
+		  WHERE owner = userName;
+	BEGIN
+		OPEN c_user_tables;
+	   	LOOP
+	      FETCH c_user_tables into tableName;
+	      EXIT WHEN c_user_tables%notfound;
+	      dbms_output.put_line(tableName);
+	   	END LOOP;
+	   	CLOSE c_user_tables;
+	EXCEPTION
+		WHEN others THEN
+			dbms_output.put_line('Error: Generic!');
+	END;
 EXCEPTION
 	WHEN no_name_given THEN
 		dbms_output.put_line('Error: missing user name');
