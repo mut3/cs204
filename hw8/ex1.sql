@@ -36,10 +36,10 @@ SELECT pmkItemNo AS ITEMNO,
 	(
 		MAX(pmkOrderDate) - MIN(pmkOrderDate)
 	)/(
-		(SELECT COUNT(*) FROM tblOrders GROUP BY pmkItemNo) - 1 
+		(SELECT COUNT(*) FROM tblOrders WHERE pmkItemNo = ordAvg.pmkItemNo GROUP BY pmkItemNo) - 1
 	) 
 	AS AVERAGE_INTERVAL 
-FROM tblOrders
+FROM tblOrders ordAvg
 GROUP BY pmkItemNo;
 
 
