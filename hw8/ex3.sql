@@ -25,6 +25,7 @@ BEGIN
         dbms_output.put_line('3.');
         OPEN c_user_name;
         FETCH c_user_name into nameCount;
+        dbms_output.put_line(nameCount);
         IF (nameCount < 1) THEN 
             RAISE no_data_found; 
         END IF;
