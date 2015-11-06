@@ -4,7 +4,7 @@ AS
 --Variables EXCEPTION DEF
 no_name_given EXCEPTION;
 tableName all_tables.table_name%type;
-name all_users.username%type;
+nameCount INT;
 BEGIN
     dbms_output.put_line('1. userName: '|| userName);
     IF (userName IS NULL) THEN
@@ -17,16 +17,23 @@ BEGIN
             SELECT table_name into tableName
             FROM all_tables
             WHERE owner = upper(userName);
-            
-    BEGIN
-        dbms_output.put_line('3.');
-        SELECT username into name
+        CURSOR c_user_name IS
+            SELECT COUNT(username) into nameCount
             FROM all_users
             WHERE username=upper(userName);
+    BEGIN
+        dbms_output.put_line('3.');
+        OPEN c_user_name;
+        FETCH c_user_name into nameCount;
+        IF (nameCount < 1) THEN 
+            RAISE no_data_found; 
+        END IF;
+        dbms_output.put_line('4.');
+        CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
           FETCH c_user_tables into tableName;
-          dbms_output.put_line('4.');
+          dbms_output.put_line('4a.');
           EXIT WHEN c_user_tables%notfound;
           dbms_output.put_line('4b.');
           dbms_output.put_line(tableName);
