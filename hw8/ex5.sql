@@ -12,22 +12,25 @@ ON tblEmployee
 BEGIN 
    INSERT INTO audit_trail VALUES ('Before_table trigger fired.');
 END;
+/
 
 CREATE OR REPLACE TRIGGER before_row 
 BEFORE
-UPDATE OF fldSalary 
 ON tblEmployee 
+FOR EACH ROW
 BEGIN 
    INSERT INTO audit_trail VALUES ('Before_row trigger fired.');
 END;
+/
 
 CREATE OR REPLACE TRIGGER after_row 
 AFTER
-UPDATE OF fldSalary 
 ON tblEmployee 
+FOR EACH ROW
 BEGIN 
    INSERT INTO audit_trail VALUES ('After_row trigger fired.');
 END;
+/
 
 CREATE OR REPLACE TRIGGER after_table 
 AFTER
@@ -36,6 +39,7 @@ ON tblEmployee
 BEGIN 
    INSERT INTO audit_trail VALUES ('After_table trigger fired.');
 END;
+/
 
 -- 3) Fire the triggers created in step 2 by executing a statement for raising all employees’ salary by 10%. This single statement fires all four triggers. 
 UPDATE tblEmployee SET fldSalary = fldSalary*1.1;
