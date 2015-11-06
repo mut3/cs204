@@ -14,9 +14,9 @@ BEGIN
     
     DECLARE
         CURSOR c_user_tables IS
-            SELECT table_name 
+            SELECT table_name into tableName
             FROM all_tables
-            WHERE owner = userName;
+            WHERE owner = upper(userName);
         CURSOR c_user_name IS
             SELECT username into name
             FROM all_users
@@ -28,7 +28,7 @@ BEGIN
         CLOSE c_user_name;
         OPEN c_user_tables;
         LOOP
-          FETCH c_user_tables into tableName;
+          FETCH c_user_tables;
           dbms_output.put_line('4a.');
           EXIT WHEN c_user_tables%notfound;
           dbms_output.put_line('4b.');
