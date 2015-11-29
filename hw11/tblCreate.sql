@@ -8,7 +8,7 @@ CREATE TABLE tblDepartment
 	PRIMARY KEY(pmkDnumber)
 );
 
-CREATE TABLE tblDeptLocations
+CREATE TABLE tblDeptLocation
 (
 	fnkDnumber varchar(255) NOT NULL,
 	fldDlocation varchar(255) NOT NULL,
