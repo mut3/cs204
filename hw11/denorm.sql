@@ -6,7 +6,7 @@
 -- i. Merge the schemas of three tables Department, Dept_locations, and Project into one table schema. Show the resulting schema (with no duplicate columns) and show all functional and multi-valued dependencies in the way shown in Figure 15.12 (page 527) of the textbook. (Use a double arrowhead for a multi-valued dependency.). 
 -- Drawn on paper and submitted in class with exercise 2
 -- ii. Create the merged table. Specify the primary key of the merged table. Commit after creating the table. In addition, discuss briefly how you would enforce the functional dependency constraints identified in step i. Note that specifying the primary key of the merged relation does not automatically enforce the dependency constraints identified in the exercise b-i, because the merged table is not in the normal form.  
-CREATE TABLE tblDepartmentProjectLocations
+CREATE TABLE tblDepartmentProjectLocation
 (
 	fldDname varchar(255),
 	pmkDnumber varchar(255) NOT NULL,
@@ -26,7 +26,7 @@ start tblCreate.sql;
 -- fill tables
 start tblFill.sql;
 -- insert records
-INSERT INTO tblDepartmentProjectLocations (
+INSERT INTO tblDepartmentProjectLocation (
 	fldDname,
 	pmkDnumber,
 	fnkMgrSsn,
@@ -36,7 +36,7 @@ INSERT INTO tblDepartmentProjectLocations (
 	pmkPnumber,
 	fldPlocation
 )
-SELECT (
+SELECT 
 	tblDepartment.fldDname,
 	tblDepartment.pmkDnumber,
 	tblDepartment.fnkMgrSsn,
@@ -45,7 +45,6 @@ SELECT (
 	tblProject.fldPname,
 	tblProject.pmkPnumber,
 	tblProject.fldPlocation
-)
 FROM tblProject 
 JOIN tblDepartment 
 	ON tblProject.fnkDnum = tblDepartment.pmkDnumber
@@ -55,18 +54,18 @@ JOIN tblDeptLocation
 start tblClear.sql;
 commit;
 -- iv. Create an index on the column dnumber. Well, as in the exercise a, there are only a handful of tuples, so it’s an overkill to create an index here, but let’s do it anyway for the sake of experiencing it. Commit after creating the index. 
-CREATE INDEX idxDnumber ON tblDepartmentProjectLocations (pmkDnumber);
+CREATE INDEX idxDnumber ON tblDepartmentProjectLocation (pmkDnumber);
 commit;
 -- v. Execute the following queries against the merged table: (1) retrieve tuples belonging to each of the original tables (i.e., Department, Dept_locations, Project), 
 -- tblDepartment columns
-SELECT fldDname, pmkDnumber, fnkMgrSsn, fldMgrStartDate FROM tblDepartmentProjectLocations;
+SELECT fldDname, pmkDnumber, fnkMgrSsn, fldMgrStartDate FROM tblDepartmentProjectLocation;
 -- tblDeptLocation columns
-SELECT fldDlocation, pmkDnumber FROM tblDepartmentProjectLocations;
+SELECT fldDlocation, pmkDnumber FROM tblDepartmentProjectLocation;
 -- tblProject columns
-SELECT fldPname, pmkPnumber, fldPlocation, pmkDnumber FROM tblDepartmentProjectLocations;
+SELECT fldPname, pmkPnumber, fldPlocation, pmkDnumber FROM tblDepartmentProjectLocation;
 -- (2) retrieve the location and the project (name) of a department named 'Administration'. Make sure there are no duplicate tuples in the query results. 
-SELECT  DISINCT(fldPlocation, fldPname) FROM tblDepartmentProjectLocations WHERE fldDname = 'Administration';
+SELECT  DISINCT(fldPlocation, fldPname) FROM tblDepartmentProjectLocation WHERE fldDname = 'Administration';
 -- vi. Drop the index and the merged table. Commit after dropping them all.
 DROP INDEX idxDnumber;
-DROP TABLE tblDepartmentProjectLocations CASCADE CONSTRAINTS;
+DROP TABLE tblDepartmentProjectLocation CASCADE CONSTRAINTS;
 commit;

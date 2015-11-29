@@ -4,7 +4,6 @@ CREATE TABLE tblDepartment
 	pmkDnumber varchar(255) NOT NULL,
 	fnkMgrSsn int,
 	fldMgrStartDate varchar(255),
-	CONSTRAINT fk_DeptMgrSsn FOREIGN KEY (fnkMgrSsn) REFERENCES tblEmployee(pmkSsn),
 	PRIMARY KEY(pmkDnumber)
 );
 
