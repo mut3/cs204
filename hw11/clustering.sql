@@ -44,7 +44,6 @@ CREATE INDEX idxDepartment ON CLUSTER clsDepartment;
 commit;
 -- iii. Insert the tuples shown in the textbook Figure 3.6 (page 72) into the clustered tables. Insert null for the column mgrssn of the Department table, since the table Employee is omitted in this exercise. You can use insert_tuples_dept_locs_projs.sql as is.(Specifically, include the command “start insert_tuples_dept_locs_projs.sql” in the input script.)
 start tblFill.sql;
-
 -- iv. Execute the following queries against the clustered tables: (1) retrieve tuples from each clustered table (i.e., Department, Dept_locations, Project),  Note that, although the files of the three tables have been merged into one, we still see them as separate tables at the logical level.
 SELECT * FROM tblDepartment;
 SELECT * FROM tblDeptLocation;
@@ -59,7 +58,7 @@ SELECT tblProject.fldPname, tblProject.fldPlocation
 -- v. Drop the index, clustered tables, and the cluster. Commit after dropping them all.
 DROP INDEX idxDepartment;
 DROP TABLE tblDepartment CASCADE CONSTRAINTS;
-DROP TABLE tblDeptLocations CASCADE CONSTRAINTS;
+DROP TABLE tblDeptLocation CASCADE CONSTRAINTS;
 DROP TABLE tblProject CASCADE CONSTRAINTS;
 DROP CLUSTER clsDepartment;
 commit;
