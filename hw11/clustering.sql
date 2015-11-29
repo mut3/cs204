@@ -18,7 +18,7 @@ CREATE TABLE tblDepartment
 	PRIMARY KEY(pmkDnumber)
 );
 
-CREATE TABLE tblDeptLocations
+CREATE TABLE tblDeptLocation
 (
 	fnkDnumber varchar(255) NOT NULL,
 	fldDlocation varchar(255) NOT NULL,
@@ -47,11 +47,12 @@ start tblFill.sql;
 
 -- iv. Execute the following queries against the clustered tables: (1) retrieve tuples from each clustered table (i.e., Department, Dept_locations, Project),  Note that, although the files of the three tables have been merged into one, we still see them as separate tables at the logical level.
 SELECT * FROM tblDepartment;
-SELECT * FROM tblDeptLocations;
+SELECT * FROM tblDeptLocation;
 SELECT * FROM tblProject;
 -- (2) retrieve the location and the project (name) of a department named ‘Administration’.
 SELECT tblProject.fldPname, tblProject.fldPlocation 
-	FROM tblProject JOIN tblDepartment 
+	FROM tblProject 
+	JOIN tblDepartment 
 	ON tblProject.fnkDnum = tblDepartment.pmkDnumber 
 	WHERE tblDepartment.fldDname = 'Administration';
 
