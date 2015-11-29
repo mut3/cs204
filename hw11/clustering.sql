@@ -42,7 +42,7 @@ commit;
 -- ii. Create an index on the clustering key (i.e., dnumber). Well, there are only a handfulof tuples, so it’s an overkill to create an index here, but let’s do it anyway for the sake of experiencing it. Commit after creating the index.
 CREATE INDEX idxDepartment ON CLUSTER clsDepartment;
 commit;
--- iii. Insert the tuples shown in the textbook Figure 3.6 (page 72) into the clustered tables. Insert null for the column mgrssn of the Department table, since the table Employee is omitted in this exercise. You can use insert_tuples_dept_locs_projs.sql as is.(Specifically, include the command “start insert_tuples_dept_locs_projs.sql” in the input script.)
+-- iii. Insert the tuples shown in the textbook Figure 3.6 (page 72) into the clustered tables. Insert null for the column mgrssn of the Department table, since the table Employee is omitted in this exercise. You can use insert_tuples_dept_locs_projs.sql as is.(Specifically, include the command 'start insert_tuples_dept_locs_projs.sql' in the input script.)
 start tblFill.sql;
 -- iv. Execute the following queries against the clustered tables: (1) retrieve tuples from each clustered table (i.e., Department, Dept_locations, Project),  Note that, although the files of the three tables have been merged into one, we still see them as separate tables at the logical level.
 SELECT * FROM tblDepartment;
