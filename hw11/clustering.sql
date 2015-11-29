@@ -6,7 +6,7 @@
 -- i. Create a cluster containing tables Department, Dept_locations, and Project, where dnumber is the clustering key. Use the table schema shown in the textbook Figure 3.7 (page 75). Omit the foreign key constraint for mgrssn in the Department table, since the table Employee is omitted in this exercise. Commit after creating the cluster and the tables in the cluster.
 CREATE CLUSTER clsDepartment
 (
-   	dnumber NUMBER(4)
+   	dnumber varchar(255)
 );
 CREATE TABLE tblDepartment
 (
