@@ -8,11 +8,11 @@ INSERT INTO tblDepartment VALUES ('Research', 5, NULL, '22-May-78');
 INSERT INTO tblDepartment VALUES ('Administration', 4, NULL, '01-Jan-85');
 INSERT INTO tblDepartment VALUES ('Headquarters', 1, NULL, '19-Jun-71'); 
 
-INSERT INTO tblDeptLocations VALUES (1, 'Houston');
-INSERT INTO tblDeptLocations VALUES (4, 'Stafford');
-INSERT INTO tblDeptLocations VALUES (5, 'Bellaire');
-INSERT INTO tblDeptLocations VALUES (5, 'Sugarland');
-INSERT INTO tblDeptLocations VALUES (5, 'Houston');
+INSERT INTO tblDeptLocation VALUES (1, 'Houston');
+INSERT INTO tblDeptLocation VALUES (4, 'Stafford');
+INSERT INTO tblDeptLocation VALUES (5, 'Bellaire');
+INSERT INTO tblDeptLocation VALUES (5, 'Sugarland');
+INSERT INTO tblDeptLocation VALUES (5, 'Houston');
 
 INSERT INTO tblProject VALUES ('ProductX', 1, 'Bellaire', 5);
 INSERT INTO tblProject VALUES ('ProductY', 2, 'Sugarland', 5);
