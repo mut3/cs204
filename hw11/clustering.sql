@@ -14,18 +14,18 @@ CREATE TABLE tblDepartment
 	pmkDnumber varchar(255) NOT NULL,
 	fnkMgrSsn int,
 	fldMgrStartDate varchar(255),
-	CLUSTER clsDepartment (pmkDnumber),
 	PRIMARY KEY(pmkDnumber)
-);
+)
+CLUSTER clsDepartment (pmkDnumber);
 
 CREATE TABLE tblDeptLocation
 (
 	fnkDnumber varchar(255) NOT NULL,
 	fldDlocation varchar(255) NOT NULL,
 	CONSTRAINT fk_DeptLocDnumber FOREIGN KEY (fnkDnumber) REFERENCES tblDepartment(pmkDnumber),
-	CLUSTER clsDepartment (fnkDnumber),
 	PRIMARY KEY(fnkDnumber, fldDlocation)
-);
+)
+CLUSTER clsDepartment (fnkDnumber);
 
 CREATE TABLE tblProject
 (
@@ -35,9 +35,9 @@ CREATE TABLE tblProject
 	fnkDnum varchar(255),
 	CONSTRAINT chk_ProjLocation CHECK (fldPlocation IN ('Bellaire','Sugarland','Houston','Stafford')),
 	CONSTRAINT fk_PrjDnum FOREIGN KEY (fnkDnum) REFERENCES tblDepartment(pmkDnumber),
-	CLUSTER clsDepartment (fnkDnum),
 	PRIMARY KEY(pmkPnumber)
-);
+)
+CLUSTER clsDepartment (fnkDnum);
 commit;
 -- ii. Create an index on the clustering key (i.e., dnumber). Well, there are only a handfulof tuples, so it’s an overkill to create an index here, but let’s do it anyway for the sake of experiencing it. Commit after creating the index.
 CREATE INDEX idxDepartment ON CLUSTER clsDepartment;
