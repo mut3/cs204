@@ -16,7 +16,7 @@ CREATE TABLE tblDepartmentProjectLocation
 	fldPname varchar(255),
 	pmkPnumber varchar(255) NOT NULL,
 	fldPlocation varchar(255),
-	CONSTRAINT chk_ProjLocation CHECK (fldPlocation IN ('Bellaire','Sugarland','Houston','Stafford')),
+	CONSTRAINT chk_ValidProjLocation CHECK (fldPlocation IN ('Bellaire','Sugarland','Houston','Stafford')),
 	PRIMARY KEY(pmkDnumber, pmkPnumber, fldDlocation)
 );
 commit;
