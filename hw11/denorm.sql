@@ -58,13 +58,13 @@ CREATE INDEX idxDnumber ON tblDepartmentProjectLocation (pmkDnumber);
 commit;
 -- v. Execute the following queries against the merged table: (1) retrieve tuples belonging to each of the original tables (i.e., Department, Dept_locations, Project), 
 -- tblDepartment columns
-SELECT fldDname, pmkDnumber, fnkMgrSsn, fldMgrStartDate FROM tblDepartmentProjectLocation;
+SELECT DISTINCT(fldDname, pmkDnumber, fnkMgrSsn, fldMgrStartDate) FROM tblDepartmentProjectLocation;
 -- tblDeptLocation columns
-SELECT fldDlocation, pmkDnumber FROM tblDepartmentProjectLocation;
+SELECT DISTINCT(fldDlocation, pmkDnumber) FROM tblDepartmentProjectLocation;
 -- tblProject columns
-SELECT fldPname, pmkPnumber, fldPlocation, pmkDnumber FROM tblDepartmentProjectLocation;
+SELECT DISTINCT(fldPname, pmkPnumber, fldPlocation, pmkDnumber) FROM tblDepartmentProjectLocation;
 -- (2) retrieve the location and the project (name) of a department named 'Administration'. Make sure there are no duplicate tuples in the query results. 
-SELECT  DISINCT(fldPlocation, fldPname) FROM tblDepartmentProjectLocation WHERE fldDname = 'Administration';
+SELECT  DISTINCT(fldPlocation, fldPname) FROM tblDepartmentProjectLocation WHERE fldDname = 'Administration';
 -- vi. Drop the index and the merged table. Commit after dropping them all.
 DROP INDEX idxDnumber;
 DROP TABLE tblDepartmentProjectLocation CASCADE CONSTRAINTS;
