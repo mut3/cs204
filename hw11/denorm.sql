@@ -64,7 +64,7 @@ SELECT DISTINCT fldDlocation, pmkDnumber FROM tblDepartmentProjectLocation;
 -- tblProject columns
 SELECT DISTINCT fldPname, pmkPnumber, fldPlocation, pmkDnumber FROM tblDepartmentProjectLocation;
 -- (2) retrieve the location and the project (name) of a department named 'Administration'. Make sure there are no duplicate tuples in the query results. 
-SELECT  DISTINCT(fldPlocation, fldPname) FROM tblDepartmentProjectLocation WHERE fldDname = 'Administration';
+SELECT  DISTINCT fldPlocation, fldPname FROM tblDepartmentProjectLocation WHERE fldDname = 'Administration';
 -- vi. Drop the index and the merged table. Commit after dropping them all.
 DROP INDEX idxDnumber;
 DROP TABLE tblDepartmentProjectLocation CASCADE CONSTRAINTS;
